@@ -7,7 +7,15 @@ https://github.com/jpbro/VbPcre2
 
 The project related licenses are clearly stated in the Repo.
 
+
+
+
 -------------------------------------------------------------
+#### Project objectives
+  Previously mentioned Mr. @jpbro:
+  > The secondary goal of this project is to be a drop-in replacement for the VBSscript RegExp object.
+
+Also makes the Pcre2 library work in TwinBasic and VBA (Excel, Word, PowerPoint, Outlook Mail, ...)
 
 #### Outstanding features added to the project:
 
