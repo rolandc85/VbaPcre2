@@ -41,3 +41,18 @@ Sub test1()
   Debug.Print "  SubMatch['numbers']: "; m(0).SubMatches(re.IndexByName("numbers"))
 End Sub
 ```
+-------------------------------------------------------------
+### Here are some common modern syntaxes in PCRE2, not found in VBScript.RegExp:
+By leveraging the Pcre2 library, PCRE2 supports many modern syntaxes, including asymmetric groups ```((?>...))```, character class options (e.g., ```(?i)```), Unicode property alternative names ```(\p{...})```, nested options ```((?i:...))```, whitespace wildcards ```(\s)```, and time suffix types ```(\d{1,2})```.
+
++ Possessive Groups: ```(?>...)``` groups sub-expressions together without allowing backtracks, which improves performance.
++ Character class options: Use ```(?i)``` to enable case-insensitive mode in that sub-expression, ```(?m)``` for multi-line mode, and ```(?s)``` for viewing every character as part of a line.
++ Unicode property alternative names: Use ```\p{<name>}``` or ```\P{<name>}``` to match characters with specific Unicode properties (e.g., ```\p{Lu}``` for uppercase).
++ Nested Options: ```(?i:abc)``` applies case-insensitive options to that subgroup only.
++ Characters representing whitespace and words: ```\s``` matches any whitespace character (including non-ASCII characters), and \w matches any word character.
++ Time-based quantifiers: Allows you to quantify a sample over a given period of time.
++ Backreference separation: ```\1``` references the contents of the group capturing number 1.
+- Positive Lookahead : ```(?=...)``` matches when the pattern followed by the pattern in parentheses.
+- Negative Lookahead : ```(?!...)``` matches when the pattern that follows is not the pattern in parentheses.
+- Positive Lookbehind : ```(?<=...)``` matches when the preceding pattern is the pattern in parentheses.
+- Negative Lookbehind : ```(?<!...)``` matches when the preceding pattern is not the pattern in parentheses.
