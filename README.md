@@ -8,16 +8,16 @@ https://github.com/jpbro/VbPcre2
 The project related licenses are clearly stated in the Repo.
 
 
-
-
 -------------------------------------------------------------
-#### Project objectives
+### Project objectives
   Previously mentioned Mr. @jpbro:
   > The secondary goal of this project is to be a drop-in replacement for the VBSscript RegExp object.
 
 Also makes the Pcre2 library work in TwinBasic and VBA (Excel, Word, PowerPoint, Outlook Mail, ...)
 
-#### Outstanding features added to the project:
+
+
+### Outstanding features added to the project:
 
 - Inherit the syntax ```SubMatches``` instead of ```SubMatchValue```
 - Add string retrieval from named group with position return function ```IndexByName``` in IRegExp Class, return position in group ```SubMatches```
@@ -31,9 +31,13 @@ Sub test1()
   re.Pattern = "(?<numbers>123).+?(?<chars>abc).+?(?<sign>@@@)"
   re.GlobalSearch = True
   Set m = re.Execute("123  abc  @@@")
-  Debug.Print "        Match count: "; m.count
-  Debug.Print "         Match Text: "; m(0)
-  Debug.Print "        SubMatch[1]: "; m(0).SubMatches(1)
-  Debug.Print "SubMatch['numbers']: "; m(0).SubMatches(re.IndexByName("numbers"))
+  Debug.Print "          Match count: "; m.count
+  Debug.Print "           Match Text: "; m(0)
+  Debug.Print "   Match - FirstIndex: "; m(0).FirstIndex
+  Debug.Print "    Match - LastIndex: "; m(0).LastIndex
+  Debug.Print "          SubMatch[1]: "; m(0).SubMatches(1)
+  Debug.Print "SubMatch - FirstIndex: "; m(0).SubMatchFirstIndex(1)
+  Debug.Print " SubMatch - LastIndex: "; m(0).SubMatchLastIndex(1)
+  Debug.Print "  SubMatch['numbers']: "; m(0).SubMatches(re.IndexByName("numbers"))
 End Sub
 ```
