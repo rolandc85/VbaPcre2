@@ -58,3 +58,8 @@ By leveraging the Pcre2 library, PCRE2 supports many modern syntaxes, including 
 - Negative Lookahead : ```(?!...)``` matches when the pattern that follows is not the pattern in parentheses.
 - Positive Lookbehind : ```(?<=...)``` matches when the preceding pattern is the pattern in parentheses.
 - Negative Lookbehind : ```(?<!...)``` matches when the preceding pattern is not the pattern in parentheses.
+
+#### Recursion 
+  Syntaxes: ```(?R)```, ```(?0)```, ```(?1)```, ```(?&name)```.
+- Unnamed recursion ```((?R))```: When you use ```(?R)``` in a pattern, it will call the same pattern again from the beginning. This is useful for structures that can be infinitely nested, like parentheses or tree structures.
+- Named recursion ```((?&name))```:If you have named a repeating group using ```(?<name>...)```, you can recall that group using ```(?&name)```.
