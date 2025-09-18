@@ -22,6 +22,8 @@ The project related licenses are clearly stated in the Repo.
 - Inherit the syntax ```SubMatches``` instead of ```SubMatchValue```
 - Add string retrieval from named group with position return function ```IndexByName``` in IRegExp Class, return position in group ```SubMatches```
 
+  If you are familiar with the setting in VBScript.RegExp as Global, MultiLine, change it to GlobalSearch, Options.Compile.MultiLine
+
 #### VBA Example Code:
 
 ```VBA
