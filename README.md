@@ -19,8 +19,9 @@ The project related licenses are clearly stated in the Repo.
 
 ### Outstanding features added to the project:
 
-- Inherit the syntax ```SubMatches``` instead of ```SubMatchValue```
-- Add string retrieval from named group with position return function ```IndexByName``` in IRegExp Class, return position in group ```SubMatches```
+- Inherit the syntax ```SubMatches``` instead of ```SubMatchValue```.
+- Add string retrieval from named group with position return function ```IndexByName``` in IRegExp Class, return position in group ```SubMatches```.
+- The Pcre2 library does not support the Unicode syntax ```\uXXXX``` as in Javascript and VBScript, please convert it to ```\x{XXXX}```.
 
   If you are familiar with the setting in VBScript.RegExp as Global, MultiLine, change it to GlobalSearch, Options.Compile.MultiLine
 
