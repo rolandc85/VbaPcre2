@@ -21,7 +21,6 @@ The project related licenses are clearly stated in the Repo.
 
 - Inherit the syntax ```SubMatches``` instead of ```SubMatchValue```.
 - Add string retrieval from named group with position return function ```IndexByName``` in IRegExp Class, return position in group ```SubMatches```.
-- The Pcre2 library does not support the Unicode syntax ```\uXXXX``` as in Javascript and VBScript, please convert it to ```\x{XXXX}```.
 
   If you are familiar with the setting in VBScript.RegExp as Global, MultiLine, change it to GlobalSearch, Options.Compile.MultiLine
 
@@ -32,7 +31,8 @@ Sub test1()
   Dim re As IRegExp, m As Object
   Set re = New IRegExp
   re.Pattern = "(?<numbers>123).+?(?<chars>abc).+?(?<sign>@@@)"
-  re.GlobalSearch = True
+  re.GlobalSearch = True  ' not use: re.Global = True
+  re.Options.Compile.Multiline = True ' not use: re.Multiline = True
   Set m = re.Execute("123  abc  @@@")
   Debug.Print "          Match count: "; m.count
   Debug.Print "           Match Text: "; m(0)
@@ -44,6 +44,8 @@ Sub test1()
   Debug.Print "  SubMatch['numbers']: "; m(0).SubMatches(re.IndexByName("numbers"))
 End Sub
 ```
+
+****** The Pcre2 library does not support the Unicode syntax ```\uXXXX``` as in Javascript and VBScript, please convert it to ```\x{XXXX}```.
 -------------------------------------------------------------
 ### Here are some common modern syntaxes in PCRE2, not found in VBScript.RegExp:
 By leveraging the Pcre2 library, PCRE2 supports many modern syntaxes, including asymmetric groups ```((?>...))```, character class options (e.g., ```(?i)```), Unicode property alternative names ```(\p{...})```, nested options ```((?i:...))```, whitespace wildcards ```(\s)```, and time suffix types ```(\d{1,2})```.
