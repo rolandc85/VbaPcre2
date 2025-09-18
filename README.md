@@ -1,5 +1,5 @@
 # VbaPcre2
- PCRE2 Regular Expression (Regex) Library Wrapper for Microsoft Visual Basic For Applications (VBA 32+64 bit))
+ PCRE2 Regular Expression (Regex) Library Wrapper for TwinBasic and Microsoft Visual Basic For Applications (VBA 32+64 bit)
 
 This project inherits the source code from VbPcre2 of Mr. @jpbro
 
