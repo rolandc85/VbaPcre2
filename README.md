@@ -11,9 +11,9 @@ The project related licenses are clearly stated in the Repo.
 -------------------------------------------------------------
 ### Project objectives
   Previously mentioned Mr. @jpbro:
-  > The secondary goal of this project is to be a drop-in replacement for the VBSscript RegExp object.
+  > The secondary goal of this project is to be a drop-in replacement for the VBScript.RegExp object.
 
-Also makes the Pcre2 library work in TwinBasic and VBA (Excel, Word, PowerPoint, Outlook Mail, ...)
+  Also makes the Pcre2 library work in TwinBasic and VBA (Excel, Word, PowerPoint, Outlook Mail, ...)
 
 
 
