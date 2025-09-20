@@ -1,6 +1,10 @@
 # VbaPcre2
  PCRE2 Regular Expression (Regex) Library Wrapper for TwinBasic and Microsoft Visual Basic For Applications (VBA 32+64 bit)
 
+[![Downloads](https://img.shields.io/github/downloads/SanbiVN/VbaPcre2/total.svg)](https://github.com/SanbiVN/VbaPcre2/releases/download/Pcre2/VbaPcre2_v0.2.zip)
+
+
+
 This project inherits the source code from VbPcre2 of Mr. @jpbro
 
 https://github.com/jpbro/VbPcre2
